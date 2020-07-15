@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pioneer Bank</title>
+    <title>Ncash Online Banking</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">        
 </head>
 <body>
     <div id="login-area">
-        <h1 class="text-center">Welcome To Pioneer Bank</h1>
+        <h1 class="text-center">Welcome To Ncash Online Banking</h1>
         <div class="submit-area">
             <h4>Login</h4>
             <br>
@@ -32,7 +32,7 @@
             <div class="col-md-4">
                 <div class="withdraw status">
                     <h5>Withdraw</h5>
-                    <h1>$00</h1>
+                    <h1>$ <span id="currentWithdraw">00</span></h1>
                 </div>
             </div>
             <div class="col-md-4">
@@ -91,10 +91,14 @@
 
         })
         // withdraw button event
-        
+
             const withdrawbtn = document.getElementById("addWithdraw");
             withdrawbtn.addEventListener("click", function(){
                 const withdrawNumber = getInputNumber("withdrawAmount");
+                upadateSpanText("currentWithdraw", withdrawNumber);
+                upadateSpanText("currentBalance", -1 * withdrawNumber);
+
+                document.getElementById("withdrawAmount").value = "";
 
             })
 
